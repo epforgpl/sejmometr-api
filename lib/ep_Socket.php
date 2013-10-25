@@ -144,7 +144,7 @@ class ep_Socket
             $this->setConfig($config);
         }
 
-        echo(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],ep_Socket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['post'] . $this->settings->request['query']);
+//        echo(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],ep_Socket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['post'] . $this->settings->request['query']);
         $this->_curlObject = curl_init(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],ep_Socket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['query']);
         curl_setopt($this->_curlObject, CURLOPT_POSTFIELDS, $this->settings->request['post']);
         curl_setopt_array($this->_curlObject, $this->settings->curl);
