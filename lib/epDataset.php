@@ -36,39 +36,6 @@
 
 abstract class epDataset extends epSearch
 {
-    /**
-     * Bazowe ustawienia
-     *
-     * <ul>
-     *      <li>array: dataSetFilter - możliwość ustawienia wielu datasetów - ustawianie filtrów mija się wtedy z celem</li>
-     *      <li>array: filters - ustawienia dla filtrów na podstawie epDatasetEnum<dataset></li>
-     *      <li>string: queryString - słowo do przeszukiwania data setów, np. ZUS</li>
-     *      <li>array: sort - array z ustawieniami sortowania, również wykorzystuje encje epDatasetEnum</li>
-     *      <li>int: limit - ilsoc obiektow na strone</li>
-     *      <li>int: page - strona, ktora chcemy pobrac</li>
-     *      <li>string: responseType - typ odpowiedzi jakiej oczekujemy od serwera, aktualnie json|xml</li>
-     *      <li>bool: https - czy laczymy po SSL ?</li>
-     *      <li>output: filtry czy obiekty czy oba ?</li>
-     * </ul>
-     * @var array
-     */
-    protected $_settingsDefault = array(
-        'dataSetFilter' => array(), # mozliwosc ustawienia wielu datasetow
-        'filters' => array(), # filtry na podstawie odpowiednichh epDatasetEnum<dataset>
-        'queryString' => '', # słowo kluczowe do wyszukiwania
-        'sort' => array(),
-        'limit' => null,
-        'page' => null,
-        'responseType' => 'json', # json | xml
-        'https' => false,
-        'output' => array(),
-    );
-    /**
-     * Alias dla datasetu, ustawiany z encji
-     * @see epDatasetEnum
-     * @var string
-     */
-    public $alias = null;
 
     /**
      * Konstruktor, przyjmuje ustawienia jako parametry
@@ -82,40 +49,6 @@ abstract class epDataset extends epSearch
 
     }
 
-
-    /**
-     * Ustawia wiele filtrow naraz, forma :
-     * @example epPrawo::setFilters(array(epPrawo::STATUS => epPrawoStatus::OBOWIAZUJACY))
-     *
-     * @param array $filters
-     * @return $this
-     */
-    public function setFilters($filters = array())
-    {
-        foreach ($filters as $field => $value) {
-            $this->setFilter($field, $value);
-        }
-        $this->setConfig();
-        return $this;
-    }
-
-    /**
-     * Ustawia pojedynczy filtr
-     *
-     * @exmaple @example epPrawo::setFilters(epPrawo::STATUS, epPrawoStatus::OBOWIAZUJACY)
-     * @param string $field
-     * @param int|string $value
-     * @return $this
-     */
-    public function setFilter($field = null, $value = null)
-    {
-        if (!isset($this->_settingsDefault['filters'][$field]) || !is_array($this->_settingsDefault['filters'][$field])) {
-            $this->_settingsDefault['filters'][$field] = array();
-        }
-        $this->_settingsDefault['filters'][$field] = array_merge($this->_settingsDefault['filters'][$field], array($value));
-        $this->setConfig();
-        return $this;
-    }
 
     /**
      * Alias, skrót do szybkiego wyszukiwania po pojedynczym polu - zamiast $this->setFilter()->search()
