@@ -3,20 +3,20 @@
  * DataSet: Twitty posłów
  * Wpisy posłów na Twitterze
  *
- * @package Objects\epTwitty
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Twitty
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epTwitty cleanFilters()
- * @method epTwitty cleanQueryString()
- * @method epTwitty cleanSort()
- * @method epTwitty cleanResponseType()
- * @method epTwitty cleanLimit()
- * @method epTwitty cleanPage()
+ * @method ep_Twitty cleanFilters()
+ * @method ep_Twitty cleanQueryString()
+ * @method ep_Twitty cleanSort()
+ * @method ep_Twitty cleanResponseType()
+ * @method ep_Twitty cleanLimit()
+ * @method ep_Twitty cleanPage()
  */
 
-class epTwitty extends epDataset
+class ep_Twitty extends ep_Dataset
 {
 	/** 
 	 * 
@@ -118,7 +118,7 @@ class epTwitty extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -129,14 +129,14 @@ class epTwitty extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epTwitt[]
+     * @return array|ep_Twitt[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epTwitt($object));
+                array_push($this->objects, new ep_Twitt($object));
             }
         }
         return $this->objects;
@@ -160,8 +160,8 @@ class epTwitty extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epTwitt
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Twitt
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -182,7 +182,7 @@ class epTwitty extends epDataset
  * @property string $twitt_id
  * @property string $usuniety
  */
-class epTwitt extends epObject
+class ep_Twitt extends ep_Object
 {
     /**
      * Pola obiektu
@@ -233,7 +233,7 @@ class epTwitt extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epTwitt
+     * @return ep_Twitt
      */
     public function loadObjectById($id = null)
     {
@@ -251,7 +251,7 @@ class epTwitt extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epTwitt
+     * @return ep_Twitt
      */
     public function loadLayer($layer)
     {

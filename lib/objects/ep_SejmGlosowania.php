@@ -3,20 +3,20 @@
  * DataSet: Głosowania w Sejmie
  * Głosowania przeprowadzone w Sejmie 7-mej kadencji
  *
- * @package Objects\epSejmGlosowania
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmGlosowania
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmGlosowania cleanFilters()
- * @method epSejmGlosowania cleanQueryString()
- * @method epSejmGlosowania cleanSort()
- * @method epSejmGlosowania cleanResponseType()
- * @method epSejmGlosowania cleanLimit()
- * @method epSejmGlosowania cleanPage()
+ * @method ep_SejmGlosowania cleanFilters()
+ * @method ep_SejmGlosowania cleanQueryString()
+ * @method ep_SejmGlosowania cleanSort()
+ * @method ep_SejmGlosowania cleanResponseType()
+ * @method ep_SejmGlosowania cleanLimit()
+ * @method ep_SejmGlosowania cleanPage()
  */
 
-class epSejmGlosowania extends epDataset
+class ep_SejmGlosowania extends ep_Dataset
 {
 	/** 
 	 * Czas
@@ -154,7 +154,7 @@ class epSejmGlosowania extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -165,14 +165,14 @@ class epSejmGlosowania extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmGlosowanie[]
+     * @return array|ep_SejmGlosowanie[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmGlosowanie($object));
+                array_push($this->objects, new ep_SejmGlosowanie($object));
             }
         }
         return $this->objects;
@@ -196,8 +196,8 @@ class epSejmGlosowania extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmGlosowanie
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmGlosowanie
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -224,7 +224,7 @@ class epSejmGlosowania extends epDataset
  * @property string $sejm_posiedzenia_id $fieldset
  * @property string $sejm_posiedzenia_tytul $fieldset
  */
-class epSejmGlosowanie extends epObject
+class ep_SejmGlosowanie extends ep_Object
 {
     /**
      * Pola obiektu
@@ -272,7 +272,7 @@ class epSejmGlosowanie extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmGlosowanie
+     * @return ep_SejmGlosowanie
      */
     public function loadObjectById($id = null)
     {
@@ -290,7 +290,7 @@ class epSejmGlosowanie extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmGlosowanie
+     * @return ep_SejmGlosowanie
      */
     public function loadLayer($layer)
     {

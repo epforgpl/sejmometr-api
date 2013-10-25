@@ -3,20 +3,20 @@
  * DataSet: Portale
  * Monitorowane portale
  *
- * @package Objects\epCrawlerSites
- * @version 0.1 alpha build 93
+ * @package Objects\ep_CrawlerSites
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epCrawlerSites cleanFilters()
- * @method epCrawlerSites cleanQueryString()
- * @method epCrawlerSites cleanSort()
- * @method epCrawlerSites cleanResponseType()
- * @method epCrawlerSites cleanLimit()
- * @method epCrawlerSites cleanPage()
+ * @method ep_CrawlerSites cleanFilters()
+ * @method ep_CrawlerSites cleanQueryString()
+ * @method ep_CrawlerSites cleanSort()
+ * @method ep_CrawlerSites cleanResponseType()
+ * @method ep_CrawlerSites cleanLimit()
+ * @method ep_CrawlerSites cleanPage()
  */
 
-class epCrawlerSites extends epDataset
+class ep_CrawlerSites extends ep_Dataset
 {
 	/** 
 	 * 
@@ -58,7 +58,7 @@ class epCrawlerSites extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -69,14 +69,14 @@ class epCrawlerSites extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epCrawlerSite[]
+     * @return array|ep_CrawlerSite[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epCrawlerSite($object));
+                array_push($this->objects, new ep_CrawlerSite($object));
             }
         }
         return $this->objects;
@@ -100,8 +100,8 @@ class epCrawlerSites extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epCrawlerSite
- * @version 0.1 alpha build 93
+ * @package Objects\ep_CrawlerSite
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -112,7 +112,7 @@ class epCrawlerSites extends epDataset
  * @property string $nazwa
  * @property string $url
  */
-class epCrawlerSite extends epObject
+class ep_CrawlerSite extends ep_Object
 {
     /**
      * Pola obiektu
@@ -157,7 +157,7 @@ class epCrawlerSite extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epCrawlerSite
+     * @return ep_CrawlerSite
      */
     public function loadObjectById($id = null)
     {
@@ -175,7 +175,7 @@ class epCrawlerSite extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epCrawlerSite
+     * @return ep_CrawlerSite
      */
     public function loadLayer($layer)
     {

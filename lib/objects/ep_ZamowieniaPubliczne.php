@@ -3,20 +3,20 @@
  * DataSet: Zamówienia Publiczne
  * 
  *
- * @package Objects\epZamowieniaPubliczne
- * @version 0.1 alpha build 93
+ * @package Objects\ep_ZamowieniaPubliczne
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epZamowieniaPubliczne cleanFilters()
- * @method epZamowieniaPubliczne cleanQueryString()
- * @method epZamowieniaPubliczne cleanSort()
- * @method epZamowieniaPubliczne cleanResponseType()
- * @method epZamowieniaPubliczne cleanLimit()
- * @method epZamowieniaPubliczne cleanPage()
+ * @method ep_ZamowieniaPubliczne cleanFilters()
+ * @method ep_ZamowieniaPubliczne cleanQueryString()
+ * @method ep_ZamowieniaPubliczne cleanSort()
+ * @method ep_ZamowieniaPubliczne cleanResponseType()
+ * @method ep_ZamowieniaPubliczne cleanLimit()
+ * @method ep_ZamowieniaPubliczne cleanPage()
  */
 
-class epZamowieniaPubliczne extends epDataset
+class ep_ZamowieniaPubliczne extends ep_Dataset
 {
 	/** 
 	 * 
@@ -232,7 +232,7 @@ class epZamowieniaPubliczne extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -243,14 +243,14 @@ class epZamowieniaPubliczne extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epZamowieniePubliczne[]
+     * @return array|ep_ZamowieniePubliczne[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epZamowieniePubliczne($object));
+                array_push($this->objects, new ep_ZamowieniePubliczne($object));
             }
         }
         return $this->objects;
@@ -274,8 +274,8 @@ class epZamowieniaPubliczne extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epZamowieniePubliczne
- * @version 0.1 alpha build 93
+ * @package Objects\ep_ZamowieniePubliczne
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -315,7 +315,7 @@ class epZamowieniaPubliczne extends epDataset
  * @property string $zamawiajacy_ulica
  * @property string $zamawiajacy_www
  */
-class epZamowieniePubliczne extends epObject
+class ep_ZamowieniePubliczne extends ep_Object
 {
     /**
      * Pola obiektu
@@ -360,7 +360,7 @@ class epZamowieniePubliczne extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epZamowieniePubliczne
+     * @return ep_ZamowieniePubliczne
      */
     public function loadObjectById($id = null)
     {
@@ -378,7 +378,7 @@ class epZamowieniePubliczne extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epZamowieniePubliczne
+     * @return ep_ZamowieniePubliczne
      */
     public function loadLayer($layer)
     {

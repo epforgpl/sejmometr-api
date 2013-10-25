@@ -3,20 +3,20 @@
  * DataSet: Stacje kolejowe w Polsce
  * Zbiór danych stacji kolejowych zawierający ich nazwy, lokalizajce, a także wykaz przecinających je linii kolejowych.
  *
- * @package Objects\epKolejStacje
- * @version 0.1 alpha build 93
+ * @package Objects\ep_KolejStacje
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epKolejStacje cleanFilters()
- * @method epKolejStacje cleanQueryString()
- * @method epKolejStacje cleanSort()
- * @method epKolejStacje cleanResponseType()
- * @method epKolejStacje cleanLimit()
- * @method epKolejStacje cleanPage()
+ * @method ep_KolejStacje cleanFilters()
+ * @method ep_KolejStacje cleanQueryString()
+ * @method ep_KolejStacje cleanSort()
+ * @method ep_KolejStacje cleanResponseType()
+ * @method ep_KolejStacje cleanLimit()
+ * @method ep_KolejStacje cleanPage()
  */
 
-class epKolejStacje extends epDataset
+class ep_KolejStacje extends ep_Dataset
 {
 	/** 
 	 * 
@@ -46,7 +46,7 @@ class epKolejStacje extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -57,14 +57,14 @@ class epKolejStacje extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epKolejStacja[]
+     * @return array|ep_KolejStacja[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epKolejStacja($object));
+                array_push($this->objects, new ep_KolejStacja($object));
             }
         }
         return $this->objects;
@@ -88,8 +88,8 @@ class epKolejStacje extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epKolejStacja
- * @version 0.1 alpha build 93
+ * @package Objects\ep_KolejStacja
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -98,7 +98,7 @@ class epKolejStacje extends epDataset
  * @property string $loc_lng
  * @property string $nazwa
  */
-class epKolejStacja extends epObject
+class ep_KolejStacja extends ep_Object
 {
     /**
      * Pola obiektu
@@ -143,7 +143,7 @@ class epKolejStacja extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epKolejStacja
+     * @return ep_KolejStacja
      */
     public function loadObjectById($id = null)
     {
@@ -161,7 +161,7 @@ class epKolejStacja extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epKolejStacja
+     * @return ep_KolejStacja
      */
     public function loadLayer($layer)
     {

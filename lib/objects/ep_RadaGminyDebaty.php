@@ -3,20 +3,20 @@
  * DataSet: Debaty na posiedzeniach rad gmin
  * Debaty prowadzone na posiedzeniach rad gmin
  *
- * @package Objects\epRadaGminyDebaty
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RadaGminyDebaty
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epRadaGminyDebaty cleanFilters()
- * @method epRadaGminyDebaty cleanQueryString()
- * @method epRadaGminyDebaty cleanSort()
- * @method epRadaGminyDebaty cleanResponseType()
- * @method epRadaGminyDebaty cleanLimit()
- * @method epRadaGminyDebaty cleanPage()
+ * @method ep_RadaGminyDebaty cleanFilters()
+ * @method ep_RadaGminyDebaty cleanQueryString()
+ * @method ep_RadaGminyDebaty cleanSort()
+ * @method ep_RadaGminyDebaty cleanResponseType()
+ * @method ep_RadaGminyDebaty cleanLimit()
+ * @method ep_RadaGminyDebaty cleanPage()
  */
 
-class epRadaGminyDebaty extends epDataset
+class ep_RadaGminyDebaty extends ep_Dataset
 {
 	/** 
 	 * 
@@ -124,7 +124,7 @@ class epRadaGminyDebaty extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -135,14 +135,14 @@ class epRadaGminyDebaty extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epRadaGminyDebata[]
+     * @return array|ep_RadaGminyDebata[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epRadaGminyDebata($object));
+                array_push($this->objects, new ep_RadaGminyDebata($object));
             }
         }
         return $this->objects;
@@ -166,8 +166,8 @@ class epRadaGminyDebaty extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epRadaGminyDebata
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RadaGminyDebata
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -189,7 +189,7 @@ class epRadaGminyDebaty extends epDataset
  * @property string $rady_gmin_posiedzenia_tag $fieldset
  * @property string $rady_gmin_posiedzenia_yt_playlist_id $fieldset
  */
-class epRadaGminyDebata extends epObject
+class ep_RadaGminyDebata extends ep_Object
 {
     /**
      * Pola obiektu
@@ -242,7 +242,7 @@ class epRadaGminyDebata extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epRadaGminyDebata
+     * @return ep_RadaGminyDebata
      */
     public function loadObjectById($id = null)
     {
@@ -260,7 +260,7 @@ class epRadaGminyDebata extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epRadaGminyDebata
+     * @return ep_RadaGminyDebata
      */
     public function loadLayer($layer)
     {

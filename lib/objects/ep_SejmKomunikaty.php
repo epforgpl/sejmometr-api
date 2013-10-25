@@ -3,20 +3,20 @@
  * DataSet: Komunikaty Kancelarii Sejmu
  * Komunikaty przekazywane mediom przez Kancelarię Sejmu
  *
- * @package Objects\epSejmKomunikaty
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmKomunikaty
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmKomunikaty cleanFilters()
- * @method epSejmKomunikaty cleanQueryString()
- * @method epSejmKomunikaty cleanSort()
- * @method epSejmKomunikaty cleanResponseType()
- * @method epSejmKomunikaty cleanLimit()
- * @method epSejmKomunikaty cleanPage()
+ * @method ep_SejmKomunikaty cleanFilters()
+ * @method ep_SejmKomunikaty cleanQueryString()
+ * @method ep_SejmKomunikaty cleanSort()
+ * @method ep_SejmKomunikaty cleanResponseType()
+ * @method ep_SejmKomunikaty cleanLimit()
+ * @method ep_SejmKomunikaty cleanPage()
  */
 
-class epSejmKomunikaty extends epDataset
+class ep_SejmKomunikaty extends ep_Dataset
 {
 	/** 
 	 * 
@@ -58,7 +58,7 @@ class epSejmKomunikaty extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -69,14 +69,14 @@ class epSejmKomunikaty extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmKomunikat[]
+     * @return array|ep_SejmKomunikat[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmKomunikat($object));
+                array_push($this->objects, new ep_SejmKomunikat($object));
             }
         }
         return $this->objects;
@@ -100,8 +100,8 @@ class epSejmKomunikaty extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmKomunikat
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmKomunikat
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -112,7 +112,7 @@ class epSejmKomunikaty extends epDataset
  * @property string $opis
  * @property string $tytul
  */
-class epSejmKomunikat extends epObject
+class ep_SejmKomunikat extends ep_Object
 {
     /**
      * Pola obiektu
@@ -157,7 +157,7 @@ class epSejmKomunikat extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmKomunikat
+     * @return ep_SejmKomunikat
      */
     public function loadObjectById($id = null)
     {
@@ -175,7 +175,7 @@ class epSejmKomunikat extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmKomunikat
+     * @return ep_SejmKomunikat
      */
     public function loadLayer($layer)
     {

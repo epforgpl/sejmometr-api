@@ -3,20 +3,20 @@
  * DataSet: Druki senackie
  * Druki senackie to materiały urzędowe dokumentujące prace Senatu
  *
- * @package Objects\epSenatDruki
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SenatDruki
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSenatDruki cleanFilters()
- * @method epSenatDruki cleanQueryString()
- * @method epSenatDruki cleanSort()
- * @method epSenatDruki cleanResponseType()
- * @method epSenatDruki cleanLimit()
- * @method epSenatDruki cleanPage()
+ * @method ep_SenatDruki cleanFilters()
+ * @method ep_SenatDruki cleanQueryString()
+ * @method ep_SenatDruki cleanSort()
+ * @method ep_SenatDruki cleanResponseType()
+ * @method ep_SenatDruki cleanLimit()
+ * @method ep_SenatDruki cleanPage()
  */
 
-class epSenatDruki extends epDataset
+class ep_SenatDruki extends ep_Dataset
 {
 	/** 
 	 * Data
@@ -52,7 +52,7 @@ class epSenatDruki extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -63,14 +63,14 @@ class epSenatDruki extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSenatDruk[]
+     * @return array|ep_SenatDruk[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSenatDruk($object));
+                array_push($this->objects, new ep_SenatDruk($object));
             }
         }
         return $this->objects;
@@ -94,8 +94,8 @@ class epSenatDruki extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSenatDruk
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SenatDruk
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -105,7 +105,7 @@ class epSenatDruki extends epDataset
  * @property string $numer
  * @property string $tytul
  */
-class epSenatDruk extends epObject
+class ep_SenatDruk extends ep_Object
 {
     /**
      * Pola obiektu
@@ -150,7 +150,7 @@ class epSenatDruk extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSenatDruk
+     * @return ep_SenatDruk
      */
     public function loadObjectById($id = null)
     {
@@ -168,7 +168,7 @@ class epSenatDruk extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSenatDruk
+     * @return ep_SenatDruk
      */
     public function loadLayer($layer)
     {

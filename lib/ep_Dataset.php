@@ -14,17 +14,17 @@
  * @author Adam Ciezkowski <adam.ciezkowski@epf.org.pl>
  * @link sejmometr.pl
  *
- * @see epDatasetEnum
+ * @see ep_DatasetEnum
  *
- * @method epDataset cleanFilters()
- * @method epDataset cleanQueryString()
- * @method epDataset cleanSort()
- * @method epDataset cleanResponseType()
- * @method epDataset cleanLimit()
- * @method epDataset cleanPage()
- * @method epDataset is200()
- * @method epDataset is500()
- * @method epDataset is400()
+ * @method ep_Dataset cleanFilters()
+ * @method ep_Dataset cleanQueryString()
+ * @method ep_Dataset cleanSort()
+ * @method ep_Dataset cleanResponseType()
+ * @method ep_Dataset cleanLimit()
+ * @method ep_Dataset cleanPage()
+ * @method ep_Dataset is200()
+ * @method ep_Dataset is500()
+ * @method ep_Dataset is400()
  * @method array getBodyObjects()
  * @method int getResponseCode()
  * @method mixed getPagination(string)
@@ -34,12 +34,12 @@
  * @property mixed $raw - surowa odpowiedź serwera
  */
 
-abstract class epDataset extends epSearch
+abstract class ep_Dataset extends ep_Search
 {
 
     /**
      * Konstruktor, przyjmuje ustawienia jako parametry
-     * @see epDataset::_settingsDefault
+     * @see ep_Dataset::_settingsDefault
      * @param array|int|null $config
      */
     public function __construct($config = null)
@@ -55,7 +55,7 @@ abstract class epDataset extends epSearch
      *
      * @param string $field
      * @param mixed $value
-     * @return epSocketResponse
+     * @return ep_SocketResponse
      */
     public function searchBy($field, $value)
     {
@@ -80,7 +80,7 @@ abstract class epDataset extends epSearch
      * Funkcja wyszukiwania obiektow na podstawie wszystkich ustawionych filtrow
      *
      * @param array|int|null $config
-     * @return epSocketResponse
+     * @return ep_SocketResponse
      * @abstract
      */
     public function search($config = null)
@@ -95,12 +95,12 @@ abstract class epDataset extends epSearch
      * Tworzy socket na potrzebe wykonania żądania
      *
      * @interal
-     * @return epSocket
+     * @return ep_Socket
      */
     protected function createSearchSocket()
     {
         $post = http_build_query($this->settings->filters) . '&' . http_build_query(array('page' => $this->settings->page, 'limit' => $this->settings->limit, 'output' => $this->settings->output, 'q' => $this->settings->queryString));
-        $socket = new epSocket(array(
+        $socket = new ep_Socket(array(
             'request' => array(
                 'post' => $post,
                 'url' => $this->alias,
@@ -123,12 +123,12 @@ abstract class epDataset extends epSearch
  * @abstract
  *
  */
-abstract class epDatasetEnum
+abstract class ep_DatasetEnum
 {
     /**
      * Możliwość wyłapywania filtrow przez wyszukiwanie w nazwach
      *
-     * @example epDatasetEnum::getAllMatching('ministerstwo')
+     * @example ep_DatasetEnum::getAllMatching('ministerstwo')
      * @param $pattern
      * @return array
      */
@@ -157,7 +157,7 @@ abstract class epDatasetEnum
  *
  * @abstract
  */
-class epDatasets extends epDatasetEnum
+class ep_Datasets extends ep_DatasetEnum
 {
     const PRAWO_W_PUBLIKATORACH = 'prawo';
     const ORZECZENIA_SADOW_ADMINISTRACYJNYCH = 'sa_orzeczenia';
@@ -193,7 +193,7 @@ class epDatasets extends epDatasetEnum
  *
  *
  */
-class epObject
+class ep_Object
 {
 
     /**
@@ -220,15 +220,15 @@ class epObject
 
     /**
      * Alias dla datasetu, ustawiany z encji
-     * @see epDatasetEnum
+     * @see ep_DatasetEnum
      * @var string
      */
     public $alias = null;
 
     /**
      * Ustawia dane na podstawie tablicy
-     * @param array $data dane z epSocketResponse::getBodyObjects()
-     * @see epSocketResponse::getBodyObjects()
+     * @param array $data dane z ep_SocketResponse::getBodyObjects()
+     * @see ep_SocketResponse::getBodyObjects()
      */
     public function __construct($data = array())
     {
@@ -236,7 +236,7 @@ class epObject
             $this->id = $data;
             $this->loadObjectById();
         }
-        if (is_array($data)) {
+        if (is_array($data) && !empty($data)) {
             $this->id = $data['id'];
             if(isset($data['_aliases'])) { $data['data']['aliases'] = $data['_aliases'];}
             $this->data = new ArrayObject($data['data'], ArrayObject::ARRAY_AS_PROPS);
@@ -263,7 +263,7 @@ class epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epObject
+     * @return ep_Object
      */
     public function loadObjectById($id = null)
     {
@@ -281,7 +281,7 @@ class epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epObject
+     * @return ep_Object
      */
     public function loadLayer($layer)
     {
@@ -297,7 +297,7 @@ class epObject
 
     /**
      * Tworzy socket do odczytywania pojedynczych dokumentow
-     * @return epSocket
+     * @return ep_Socket
      * @throws ErrorException
      */
     protected function createReadSocket()
@@ -305,7 +305,7 @@ class epObject
         if (!$this->id) {
             throw new ErrorException("There is no ID set for this document");
         }
-        $socket = new epSocket(array(
+        $socket = new ep_Socket(array(
             'request' => array(
                 'url' => $this->alias . '/' . $this->id,
             ),
@@ -317,7 +317,7 @@ class epObject
      * Tworzy socket do wczytywania warstaw
      *
      * @param $layer
-     * @return epSocket
+     * @return ep_Socket
      * @throws ErrorException
      */
     protected function createLayerSocket($layer)
@@ -328,12 +328,23 @@ class epObject
         if (!$layer) {
             throw new ErrorException("No layer selected");
         }
-        $socket = new epSocket(array(
+        $socket = new ep_Socket(array(
             'request' => array(
                 'url' => $this->alias . '/' . $this->id . '/' . $layer,
             ),
         ));
         return $socket;
+    }
+
+    /**
+     * Ustawiamy dataset
+     *
+     * @param string $alias
+     * @return $this
+     */
+    public function setDataset($alias) {
+        $this->alias = $alias;
+        return $this;
     }
 
 }

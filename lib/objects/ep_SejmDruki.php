@@ -3,20 +3,20 @@
  * DataSet: Druki sejmowe
  * Druki sejmowe to materiały urzędowe dokumentujące prace Sejmu
  *
- * @package Objects\epSejmDruki
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmDruki
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmDruki cleanFilters()
- * @method epSejmDruki cleanQueryString()
- * @method epSejmDruki cleanSort()
- * @method epSejmDruki cleanResponseType()
- * @method epSejmDruki cleanLimit()
- * @method epSejmDruki cleanPage()
+ * @method ep_SejmDruki cleanFilters()
+ * @method ep_SejmDruki cleanQueryString()
+ * @method ep_SejmDruki cleanSort()
+ * @method ep_SejmDruki cleanResponseType()
+ * @method ep_SejmDruki cleanLimit()
+ * @method ep_SejmDruki cleanPage()
  */
 
-class epSejmDruki extends epDataset
+class ep_SejmDruki extends ep_Dataset
 {
 	/** 
 	 * 
@@ -94,7 +94,7 @@ class epSejmDruki extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -105,14 +105,14 @@ class epSejmDruki extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmDruk[]
+     * @return array|ep_SejmDruk[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmDruk($object));
+                array_push($this->objects, new ep_SejmDruk($object));
             }
         }
         return $this->objects;
@@ -136,8 +136,8 @@ class epSejmDruki extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmDruk
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmDruk
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -154,7 +154,7 @@ class epSejmDruki extends epDataset
  * @property string $tytul_skrocony
  * @property string $sejm_druki_typy_druk_typ_nazwa $fieldset
  */
-class epSejmDruk extends epObject
+class ep_SejmDruk extends ep_Object
 {
     /**
      * Pola obiektu
@@ -199,7 +199,7 @@ class epSejmDruk extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmDruk
+     * @return ep_SejmDruk
      */
     public function loadObjectById($id = null)
     {
@@ -217,7 +217,7 @@ class epSejmDruk extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmDruk
+     * @return ep_SejmDruk
      */
     public function loadLayer($layer)
     {

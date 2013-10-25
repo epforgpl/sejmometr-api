@@ -3,20 +3,20 @@
  * DataSet: Druki w pracach rad gmin
  * Dokumenty nad którymi pracują radni gmin.
  *
- * @package Objects\epRadyDruki
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RadyDruki
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epRadyDruki cleanFilters()
- * @method epRadyDruki cleanQueryString()
- * @method epRadyDruki cleanSort()
- * @method epRadyDruki cleanResponseType()
- * @method epRadyDruki cleanLimit()
- * @method epRadyDruki cleanPage()
+ * @method ep_RadyDruki cleanFilters()
+ * @method ep_RadyDruki cleanQueryString()
+ * @method ep_RadyDruki cleanSort()
+ * @method ep_RadyDruki cleanResponseType()
+ * @method ep_RadyDruki cleanLimit()
+ * @method ep_RadyDruki cleanPage()
  */
 
-class epRadyDruki extends epDataset
+class ep_RadyDruki extends ep_Dataset
 {
 	/** 
 	 * 
@@ -88,7 +88,7 @@ class epRadyDruki extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -99,14 +99,14 @@ class epRadyDruki extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epRadaDruk[]
+     * @return array|ep_RadaDruk[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epRadaDruk($object));
+                array_push($this->objects, new ep_RadaDruk($object));
             }
         }
         return $this->objects;
@@ -130,8 +130,8 @@ class epRadyDruki extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epRadaDruk
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RadaDruk
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -147,7 +147,7 @@ class epRadyDruki extends epDataset
  * @property string $opis
  * @property string $tytul
  */
-class epRadaDruk extends epObject
+class ep_RadaDruk extends ep_Object
 {
     /**
      * Pola obiektu
@@ -194,7 +194,7 @@ class epRadaDruk extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epRadaDruk
+     * @return ep_RadaDruk
      */
     public function loadObjectById($id = null)
     {
@@ -212,7 +212,7 @@ class epRadaDruk extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epRadaDruk
+     * @return ep_RadaDruk
      */
     public function loadLayer($layer)
     {

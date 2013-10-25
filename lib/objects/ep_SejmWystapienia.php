@@ -3,20 +3,20 @@
  * DataSet: Wystąpienia w Sejmie
  * Baza wystąpień w Sejmie 7-mej kadencji. Dla większości wystąpień, dostępny jest materiał video z konkretnym wystąpieniem.
  *
- * @package Objects\epSejmWystapienia
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmWystapienia
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmWystapienia cleanFilters()
- * @method epSejmWystapienia cleanQueryString()
- * @method epSejmWystapienia cleanSort()
- * @method epSejmWystapienia cleanResponseType()
- * @method epSejmWystapienia cleanLimit()
- * @method epSejmWystapienia cleanPage()
+ * @method ep_SejmWystapienia cleanFilters()
+ * @method ep_SejmWystapienia cleanQueryString()
+ * @method ep_SejmWystapienia cleanSort()
+ * @method ep_SejmWystapienia cleanResponseType()
+ * @method ep_SejmWystapienia cleanLimit()
+ * @method ep_SejmWystapienia cleanPage()
  */
 
-class epSejmWystapienia extends epDataset
+class ep_SejmWystapienia extends ep_Dataset
 {
 	/** 
 	 * 
@@ -208,7 +208,7 @@ class epSejmWystapienia extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -219,14 +219,14 @@ class epSejmWystapienia extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmWystapienie[]
+     * @return array|ep_SejmWystapienie[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmWystapienie($object));
+                array_push($this->objects, new ep_SejmWystapienie($object));
             }
         }
         return $this->objects;
@@ -250,8 +250,8 @@ class epSejmWystapienia extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmWystapienie
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmWystapienie
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -287,7 +287,7 @@ class epSejmWystapienia extends epDataset
  * @property string $stanowiska_id $fieldset
  * @property string $stanowiska_nazwa $fieldset
  */
-class epSejmWystapienie extends epObject
+class ep_SejmWystapienie extends ep_Object
 {
     /**
      * Pola obiektu
@@ -345,7 +345,7 @@ class epSejmWystapienie extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmWystapienie
+     * @return ep_SejmWystapienie
      */
     public function loadObjectById($id = null)
     {
@@ -363,7 +363,7 @@ class epSejmWystapienie extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmWystapienie
+     * @return ep_SejmWystapienie
      */
     public function loadLayer($layer)
     {

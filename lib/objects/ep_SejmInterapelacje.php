@@ -3,20 +3,20 @@
  * DataSet: Interpelacje
  * Interpelacje to pisma posłów do premiera lub ministrów, zwracające uwagę na konkretny problem. Adresaci mają obowiązek udzielania odpowiedzi na interpelacje poselskie.
  *
- * @package Objects\epSejmInterapelacje
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmInterapelacje
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmInterapelacje cleanFilters()
- * @method epSejmInterapelacje cleanQueryString()
- * @method epSejmInterapelacje cleanSort()
- * @method epSejmInterapelacje cleanResponseType()
- * @method epSejmInterapelacje cleanLimit()
- * @method epSejmInterapelacje cleanPage()
+ * @method ep_SejmInterapelacje cleanFilters()
+ * @method ep_SejmInterapelacje cleanQueryString()
+ * @method ep_SejmInterapelacje cleanSort()
+ * @method ep_SejmInterapelacje cleanResponseType()
+ * @method ep_SejmInterapelacje cleanLimit()
+ * @method ep_SejmInterapelacje cleanPage()
  */
 
-class epSejmInterapelacje extends epDataset
+class ep_SejmInterapelacje extends ep_Dataset
 {
 	/** 
 	 * 
@@ -112,7 +112,7 @@ class epSejmInterapelacje extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -123,14 +123,14 @@ class epSejmInterapelacje extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmInterapelacja[]
+     * @return array|ep_SejmInterapelacja[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmInterapelacja($object));
+                array_push($this->objects, new ep_SejmInterapelacja($object));
             }
         }
         return $this->objects;
@@ -154,8 +154,8 @@ class epSejmInterapelacje extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmInterapelacja
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmInterapelacja
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -175,7 +175,7 @@ class epSejmInterapelacje extends epDataset
  * @property string $tytul
  * @property string $tytul_skrocony
  */
-class epSejmInterapelacja extends epObject
+class ep_SejmInterapelacja extends ep_Object
 {
     /**
      * Pola obiektu
@@ -220,7 +220,7 @@ class epSejmInterapelacja extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmInterapelacja
+     * @return ep_SejmInterapelacja
      */
     public function loadObjectById($id = null)
     {
@@ -238,7 +238,7 @@ class epSejmInterapelacja extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmInterapelacja
+     * @return ep_SejmInterapelacja
      */
     public function loadLayer($layer)
     {

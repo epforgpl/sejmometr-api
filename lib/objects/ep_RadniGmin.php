@@ -3,20 +3,20 @@
  * DataSet: Radni gmin
  * Radni gmin w Polsce
  *
- * @package Objects\epRadniGmin
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RadniGmin
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epRadniGmin cleanFilters()
- * @method epRadniGmin cleanQueryString()
- * @method epRadniGmin cleanSort()
- * @method epRadniGmin cleanResponseType()
- * @method epRadniGmin cleanLimit()
- * @method epRadniGmin cleanPage()
+ * @method ep_RadniGmin cleanFilters()
+ * @method ep_RadniGmin cleanQueryString()
+ * @method ep_RadniGmin cleanSort()
+ * @method ep_RadniGmin cleanResponseType()
+ * @method ep_RadniGmin cleanLimit()
+ * @method ep_RadniGmin cleanPage()
  */
 
-class epRadniGmin extends epDataset
+class ep_RadniGmin extends ep_Dataset
 {
 	/** 
 	 * 
@@ -223,7 +223,7 @@ class epRadniGmin extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -234,14 +234,14 @@ class epRadniGmin extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epRadnyGminy[]
+     * @return array|ep_RadnyGminy[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epRadnyGminy($object));
+                array_push($this->objects, new ep_RadnyGminy($object));
             }
         }
         return $this->objects;
@@ -265,8 +265,8 @@ class epRadniGmin extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epRadnyGminy
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RadnyGminy
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -303,7 +303,7 @@ class epRadniGmin extends epDataset
  * @property string $rady_gmin_komitety_typ $fieldset
  * @property string $rady_gmin_okregi_nr_okregu $fieldset
  */
-class epRadnyGminy extends epObject
+class ep_RadnyGminy extends ep_Object
 {
     /**
      * Pola obiektu
@@ -358,7 +358,7 @@ class epRadnyGminy extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epRadnyGminy
+     * @return ep_RadnyGminy
      */
     public function loadObjectById($id = null)
     {
@@ -376,7 +376,7 @@ class epRadnyGminy extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epRadnyGminy
+     * @return ep_RadnyGminy
      */
     public function loadLayer($layer)
     {

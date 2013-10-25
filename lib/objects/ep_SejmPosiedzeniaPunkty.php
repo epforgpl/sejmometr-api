@@ -3,20 +3,20 @@
  * DataSet: Punkty porządku dziennego w Sejmie
  * Punkty porządku dziennego na posiedzeniach Sejmu 7-mej kadencji.
  *
- * @package Objects\epSejmPosiedzeniaPunkty
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmPosiedzeniaPunkty
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmPosiedzeniaPunkty cleanFilters()
- * @method epSejmPosiedzeniaPunkty cleanQueryString()
- * @method epSejmPosiedzeniaPunkty cleanSort()
- * @method epSejmPosiedzeniaPunkty cleanResponseType()
- * @method epSejmPosiedzeniaPunkty cleanLimit()
- * @method epSejmPosiedzeniaPunkty cleanPage()
+ * @method ep_SejmPosiedzeniaPunkty cleanFilters()
+ * @method ep_SejmPosiedzeniaPunkty cleanQueryString()
+ * @method ep_SejmPosiedzeniaPunkty cleanSort()
+ * @method ep_SejmPosiedzeniaPunkty cleanResponseType()
+ * @method ep_SejmPosiedzeniaPunkty cleanLimit()
+ * @method ep_SejmPosiedzeniaPunkty cleanPage()
  */
 
-class epSejmPosiedzeniaPunkty extends epDataset
+class ep_SejmPosiedzeniaPunkty extends ep_Dataset
 {
 	/** 
 	 * 
@@ -160,7 +160,7 @@ class epSejmPosiedzeniaPunkty extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -171,14 +171,14 @@ class epSejmPosiedzeniaPunkty extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmPosiedzeniePunkt[]
+     * @return array|ep_SejmPosiedzeniePunkt[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmPosiedzeniePunkt($object));
+                array_push($this->objects, new ep_SejmPosiedzeniePunkt($object));
             }
         }
         return $this->objects;
@@ -202,8 +202,8 @@ class epSejmPosiedzeniaPunkty extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmPosiedzeniePunkt
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmPosiedzeniePunkt
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -231,7 +231,7 @@ class epSejmPosiedzeniaPunkty extends epDataset
  * @property string $tytul
  * @property string $video
  */
-class epSejmPosiedzeniePunkt extends epObject
+class ep_SejmPosiedzeniePunkt extends ep_Object
 {
     /**
      * Pola obiektu
@@ -278,7 +278,7 @@ class epSejmPosiedzeniePunkt extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmPosiedzeniePunkt
+     * @return ep_SejmPosiedzeniePunkt
      */
     public function loadObjectById($id = null)
     {
@@ -296,7 +296,7 @@ class epSejmPosiedzeniePunkt extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmPosiedzeniePunkt
+     * @return ep_SejmPosiedzeniePunkt
      */
     public function loadLayer($layer)
     {

@@ -3,20 +3,20 @@
  * DataSet: Projekty ustaw
  * Kompleksowy wgląd w proces legislacyjny w Polsce. Baza projektów ustaw, na wszystkich etapach prac legislacyjnych.
  *
- * @package Objects\epLegislacjaProjektyUstaw
- * @version 0.1 alpha build 93
+ * @package Objects\ep_LegislacjaProjektyUstaw
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epLegislacjaProjektyUstaw cleanFilters()
- * @method epLegislacjaProjektyUstaw cleanQueryString()
- * @method epLegislacjaProjektyUstaw cleanSort()
- * @method epLegislacjaProjektyUstaw cleanResponseType()
- * @method epLegislacjaProjektyUstaw cleanLimit()
- * @method epLegislacjaProjektyUstaw cleanPage()
+ * @method ep_LegislacjaProjektyUstaw cleanFilters()
+ * @method ep_LegislacjaProjektyUstaw cleanQueryString()
+ * @method ep_LegislacjaProjektyUstaw cleanSort()
+ * @method ep_LegislacjaProjektyUstaw cleanResponseType()
+ * @method ep_LegislacjaProjektyUstaw cleanLimit()
+ * @method ep_LegislacjaProjektyUstaw cleanPage()
  */
 
-class epLegislacjaProjektyUstaw extends epDataset
+class ep_LegislacjaProjektyUstaw extends ep_Dataset
 {
 	/** 
 	 * Autor projektu
@@ -202,7 +202,7 @@ class epLegislacjaProjektyUstaw extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -213,14 +213,14 @@ class epLegislacjaProjektyUstaw extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epLegislacjaProjektUstawy[]
+     * @return array|ep_LegislacjaProjektUstawy[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epLegislacjaProjektUstawy($object));
+                array_push($this->objects, new ep_LegislacjaProjektUstawy($object));
             }
         }
         return $this->objects;
@@ -244,8 +244,8 @@ class epLegislacjaProjektyUstaw extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epLegislacjaProjektUstawy
- * @version 0.1 alpha build 93
+ * @package Objects\ep_LegislacjaProjektUstawy
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -280,7 +280,7 @@ class epLegislacjaProjektyUstaw extends epDataset
  * @property string $wniesiony_projekt_id
  * @property string $ustawy_id $fieldset
  */
-class epLegislacjaProjektUstawy extends epObject
+class ep_LegislacjaProjektUstawy extends ep_Object
 {
     /**
      * Pola obiektu
@@ -326,7 +326,7 @@ class epLegislacjaProjektUstawy extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epLegislacjaProjektUstawy
+     * @return ep_LegislacjaProjektUstawy
      */
     public function loadObjectById($id = null)
     {
@@ -344,7 +344,7 @@ class epLegislacjaProjektUstawy extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epLegislacjaProjektUstawy
+     * @return ep_LegislacjaProjektUstawy
      */
     public function loadLayer($layer)
     {

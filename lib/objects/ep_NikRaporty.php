@@ -3,20 +3,20 @@
  * DataSet: Raporty Najwyższej Izby Kontroli
  * Raporty i wystąpienia pokontrolne publikowane przez Najwyższą Izbę Kontroli
  *
- * @package Objects\epNikRaporty
- * @version 0.1 alpha build 93
+ * @package Objects\ep_NikRaporty
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epNikRaporty cleanFilters()
- * @method epNikRaporty cleanQueryString()
- * @method epNikRaporty cleanSort()
- * @method epNikRaporty cleanResponseType()
- * @method epNikRaporty cleanLimit()
- * @method epNikRaporty cleanPage()
+ * @method ep_NikRaporty cleanFilters()
+ * @method ep_NikRaporty cleanQueryString()
+ * @method ep_NikRaporty cleanSort()
+ * @method ep_NikRaporty cleanResponseType()
+ * @method ep_NikRaporty cleanLimit()
+ * @method ep_NikRaporty cleanPage()
  */
 
-class epNikRaporty extends epDataset
+class ep_NikRaporty extends ep_Dataset
 {
 	/** 
 	 * Data moderacji raportu
@@ -70,7 +70,7 @@ class epNikRaporty extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -81,14 +81,14 @@ class epNikRaporty extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epNikRaport[]
+     * @return array|ep_NikRaport[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epNikRaport($object));
+                array_push($this->objects, new ep_NikRaport($object));
             }
         }
         return $this->objects;
@@ -112,8 +112,8 @@ class epNikRaporty extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epNikRaport
- * @version 0.1 alpha build 93
+ * @package Objects\ep_NikRaport
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -126,7 +126,7 @@ class epNikRaporty extends epDataset
  * @property string $pdf_id
  * @property string $tytul
  */
-class epNikRaport extends epObject
+class ep_NikRaport extends ep_Object
 {
     /**
      * Pola obiektu
@@ -171,7 +171,7 @@ class epNikRaport extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epNikRaport
+     * @return ep_NikRaport
      */
     public function loadObjectById($id = null)
     {
@@ -189,7 +189,7 @@ class epNikRaport extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epNikRaport
+     * @return ep_NikRaport
      */
     public function loadLayer($layer)
     {

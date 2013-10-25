@@ -3,20 +3,20 @@
  * DataSet: Bank Danych Lokalnych
  * Największa w Polsce baza wskaźników dotyczących sytuacji ekonomicznej i społecznej kraju
  *
- * @package Objects\epBdlWskaznikiPodgrupy
- * @version 0.1 alpha build 93
+ * @package Objects\ep_BdlWskaznikiPodgrupy
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epBdlWskaznikiPodgrupy cleanFilters()
- * @method epBdlWskaznikiPodgrupy cleanQueryString()
- * @method epBdlWskaznikiPodgrupy cleanSort()
- * @method epBdlWskaznikiPodgrupy cleanResponseType()
- * @method epBdlWskaznikiPodgrupy cleanLimit()
- * @method epBdlWskaznikiPodgrupy cleanPage()
+ * @method ep_BdlWskaznikiPodgrupy cleanFilters()
+ * @method ep_BdlWskaznikiPodgrupy cleanQueryString()
+ * @method ep_BdlWskaznikiPodgrupy cleanSort()
+ * @method ep_BdlWskaznikiPodgrupy cleanResponseType()
+ * @method ep_BdlWskaznikiPodgrupy cleanLimit()
+ * @method ep_BdlWskaznikiPodgrupy cleanPage()
  */
 
-class epBdlWskaznikiPodgrupy extends epDataset
+class ep_BdlWskaznikiPodgrupy extends ep_Dataset
 {
 	/** 
 	 * 
@@ -112,7 +112,7 @@ class epBdlWskaznikiPodgrupy extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -123,14 +123,14 @@ class epBdlWskaznikiPodgrupy extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epBdlWskaznikPodgrupy[]
+     * @return array|ep_BdlWskaznikPodgrupy[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epBdlWskaznikPodgrupy($object));
+                array_push($this->objects, new ep_BdlWskaznikPodgrupy($object));
             }
         }
         return $this->objects;
@@ -154,8 +154,8 @@ class epBdlWskaznikiPodgrupy extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epBdlWskaznikPodgrupy
- * @version 0.1 alpha build 93
+ * @package Objects\ep_BdlWskaznikPodgrupy
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -175,7 +175,7 @@ class epBdlWskaznikiPodgrupy extends epDataset
  * @property string $bdl_wskazniki_grupy_tytul $fieldset
  * @property string $bdl_wskazniki_kategorie_tytul $fieldset
  */
-class epBdlWskaznikPodgrupy extends epObject
+class ep_BdlWskaznikPodgrupy extends ep_Object
 {
     /**
      * Pola obiektu
@@ -221,7 +221,7 @@ class epBdlWskaznikPodgrupy extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epBdlWskaznikPodgrupy
+     * @return ep_BdlWskaznikPodgrupy
      */
     public function loadObjectById($id = null)
     {
@@ -239,7 +239,7 @@ class epBdlWskaznikPodgrupy extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epBdlWskaznikPodgrupy
+     * @return ep_BdlWskaznikPodgrupy
      */
     public function loadLayer($layer)
     {

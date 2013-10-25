@@ -3,20 +3,20 @@
  * DataSet: Orzeczenia Sądu Najwyższego
  * Baza orzeczeń Sądu Najwyższego w Polsce
  *
- * @package Objects\epSnOrzeczenia
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SnOrzeczenia
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSnOrzeczenia cleanFilters()
- * @method epSnOrzeczenia cleanQueryString()
- * @method epSnOrzeczenia cleanSort()
- * @method epSnOrzeczenia cleanResponseType()
- * @method epSnOrzeczenia cleanLimit()
- * @method epSnOrzeczenia cleanPage()
+ * @method ep_SnOrzeczenia cleanFilters()
+ * @method ep_SnOrzeczenia cleanQueryString()
+ * @method ep_SnOrzeczenia cleanSort()
+ * @method ep_SnOrzeczenia cleanResponseType()
+ * @method ep_SnOrzeczenia cleanLimit()
+ * @method ep_SnOrzeczenia cleanPage()
  */
 
-class epSnOrzeczenia extends epDataset
+class ep_SnOrzeczenia extends ep_Dataset
 {
 	/** 
 	 * Data
@@ -112,7 +112,7 @@ class epSnOrzeczenia extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -123,14 +123,14 @@ class epSnOrzeczenia extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSnOrzeczenie[]
+     * @return array|ep_SnOrzeczenie[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSnOrzeczenie($object));
+                array_push($this->objects, new ep_SnOrzeczenie($object));
             }
         }
         return $this->objects;
@@ -154,8 +154,8 @@ class epSnOrzeczenia extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSnOrzeczenie
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SnOrzeczenie
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -175,7 +175,7 @@ class epSnOrzeczenia extends epDataset
  * @property string $sygnatura
  * @property string $wspolsprawozdawcy_str
  */
-class epSnOrzeczenie extends epObject
+class ep_SnOrzeczenie extends ep_Object
 {
     /**
      * Pola obiektu
@@ -220,7 +220,7 @@ class epSnOrzeczenie extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSnOrzeczenie
+     * @return ep_SnOrzeczenie
      */
     public function loadObjectById($id = null)
     {
@@ -238,7 +238,7 @@ class epSnOrzeczenie extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSnOrzeczenie
+     * @return ep_SnOrzeczenie
      */
     public function loadLayer($layer)
     {

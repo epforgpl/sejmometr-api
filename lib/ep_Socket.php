@@ -5,18 +5,18 @@
  * Bazowa klasa do nawiązywania połączeń HTTP
  *
  * Może być używana jako singleton lub jako normalna instancja
- * @example epSocket::getInstance()
- * @example $o = new epSocket()
+ * @example ep_Socket::getInstance()
+ * @example $o = new ep_Socket()
  *
  * @package \HttpNetwork
  * @version 0.1
  * @author Adam Ciezkowski <adam.ciezkowski@epf.org.pl>
  * @link sejmometr.pl
  *
- * @example $o = new epSocket(array('request' => array('url' => 'http://example.com')));<br/>$o->request();
+ * @example $o = new ep_Socket(array('request' => array('url' => 'http://example.com')));<br/>$o->request();
  *
  */
-class epSocket
+class ep_Socket
 {
     /**
      * Url do API sejmometru
@@ -68,37 +68,37 @@ class epSocket
     /**
      * Obiekt ustawień
      *
-     * @see epSocket::_settingsDefault
+     * @see ep_Socket::_settingsDefault
      * @var ArrayObject
      */
     public $settings = null;
 
     /**
      * Obiekt odpowiedzi
-     * @var epSocketResponse
+     * @var ep_SocketResponse
      */
     public $response = null;
 
     /**
      * Instancja obiektu do singletona
      *
-     * @var epSocket
+     * @var ep_Socket
      * @staticvar
      * @access protected
      */
     protected static $_instance = null;
 
     /**
-     * Zwraca instancje obiektu epSocket
+     * Zwraca instancje obiektu ep_Socket
      *
      * @param array $config - zestaw parametrow do konfiguracji
-     * @see epSocket::_settings
-     * @return epSocket
+     * @see ep_Socket::_settings
+     * @return ep_Socket
      */
     public static function getSocket($config = array())
     {
         if (is_null(self::$_instance)) {
-            return self::$_instance = new epSocket($config);
+            return self::$_instance = new ep_Socket($config);
         } else {
             return self::$_instance;
         }
@@ -108,7 +108,7 @@ class epSocket
      * Konstruktor
      *
      * @param array $config
-     * @see epSocket::getSocket()
+     * @see ep_Socket::getSocket()
      */
     public function __construct($config = array())
     {
@@ -119,7 +119,7 @@ class epSocket
      * Setter dla ustawień
      *
      * @param array $config
-     * @see epSocket::getSocket()
+     * @see ep_Socket::getSocket()
      * @return void
      */
     public function setConfig($config = array())
@@ -135,7 +135,7 @@ class epSocket
      * Wykonuje żądanie
      *
      * @param array $config
-     * @return epSocketResponse
+     * @return ep_SocketResponse
      *
      */
     public function request($config = array())
@@ -144,17 +144,17 @@ class epSocket
             $this->setConfig($config);
         }
 
-//        echo(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],epSocket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['post'] . $this->settings->request['query']);
-        $this->_curlObject = curl_init(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],epSocket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['query']);
+        echo(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],ep_Socket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['post'] . $this->settings->request['query']);
+        $this->_curlObject = curl_init(preg_replace('/\{protocol\}/', $this->settings->request['protocol'],ep_Socket::API_BASE_URL) . $this->settings->request['url'] . '?' . $this->settings->request['query']);
         curl_setopt($this->_curlObject, CURLOPT_POSTFIELDS, $this->settings->request['post']);
         curl_setopt_array($this->_curlObject, $this->settings->curl);
         curl_setopt($this->_curlObject, CURLOPT_USERAGENT, $this->settings->request['userAgent']);
         curl_setopt($this->_curlObject, CURLOPT_HTTPHEADER, $this->settings->headers);
         $r = curl_exec($this->_curlObject);
         if ($this->settings->responseFormat == FORMAT_JSON) {
-            $this->response = new epSocketResponseJSON($r, $this->_curlObject, array('throwExceptions' => $this->settings->throwExceptions));
+            $this->response = new ep_SocketResponseJSON($r, $this->_curlObject, array('throwExceptions' => $this->settings->throwExceptions));
         } else {
-            $this->response = new epSocketResponseXML($r, $this->_curlObject, array('throwExceptions' => $this->settings->throwExceptions));
+            $this->response = new ep_SocketResponseXML($r, $this->_curlObject, array('throwExceptions' => $this->settings->throwExceptions));
         }
         return $this->response;
 
@@ -185,7 +185,7 @@ class epSocket
  * @property mixed raw
  */
 
-abstract class epSocketResponse
+abstract class ep_SocketResponse
 {
     /**
      * Curl handle, z żądania
@@ -203,7 +203,7 @@ abstract class epSocketResponse
     /**
      * Obiekt ustawień
      *
-     * @see epSocketResponse::_settingsDefault
+     * @see ep_SocketResponse::_settingsDefault
      * @var ArrayObject
      */
     public $settings = null;
@@ -268,8 +268,8 @@ abstract class epSocketResponse
      *
      * @param string $response - wynik dzialania cURL'a
      * @return bool
-     * @throws epSocketException
-     * @throws epSocketEmptyResponseException
+     * @throws ep_SocketException
+     * @throws ep_SocketEmptyResponseException
      */
     protected function parse($response)
     {
@@ -277,7 +277,7 @@ abstract class epSocketResponse
         $response = preg_split('/\r\n\r\n/', $response, -1, PREG_SPLIT_NO_EMPTY);
         if (!is_array($response) || count($response) < 2) {
             if ($this->settings->throwExceptions) {
-                throw new epSocketEmptyResponseException;
+                throw new ep_SocketEmptyResponseException;
             } else {
                 return false;
             }
@@ -313,8 +313,8 @@ abstract class epSocketResponse
      * @example getBodyObjects();
      * @example getInfoVersion();
      *
-     * @see epSocketResponse::getBody()
-     * @see epSocketResponset::getInfo()
+     * @see ep_SocketResponse::getBody()
+     * @see ep_SocketResponset::getInfo()
      *
      * @param string $func funkcja
      * @param array|string $args argumenty
@@ -345,9 +345,9 @@ abstract class epSocketResponse
     }
 
     /**
-     * Alias dla epSocketResponse::is200()
+     * Alias dla ep_SocketResponse::is200()
      *
-     * @see epSocketResponse::__call()
+     * @see ep_SocketResponse::__call()
      * @return bool
      */
     public function isOk()
@@ -413,11 +413,11 @@ abstract class epSocketResponse
 }
 
 /**
- * Class epSocketResponseJSON
+ * Class ep_SocketResponseJSON
  *
  * <p>Klasa odpowiedzi formatu JSON.</p>
  *
- * @example $o = new epSocketResponseJSON($json_string, $curl_resource)
+ * @example $o = new ep_SocketResponseJSON($json_string, $curl_resource)
  *
  * @package \HttpNetwork
  * @version 0.1
@@ -433,7 +433,7 @@ abstract class epSocketResponse
  * @method array getInfoStatus()
  */
 
-class epSocketResponseJSON extends epSocketResponse
+class ep_SocketResponseJSON extends ep_SocketResponse
 {
     /**
      * Konstruktor
@@ -451,11 +451,11 @@ class epSocketResponseJSON extends epSocketResponse
 }
 
 /**
- * Class epSocketResponseXML
+ * Class ep_SocketResponseXML
  *
  * <p>Klasa odpowiedzi formatu XML.</p>
  *
- * @example $o = new epSocketResponseXML($xml_string, $curl_resource)
+ * @example $o = new ep_SocketResponseXML($xml_string, $curl_resource)
  *
  * @package \HttpNetwork
  * @version 0.1
@@ -471,7 +471,7 @@ class epSocketResponseJSON extends epSocketResponse
  * @method array getInfoStatus()
  */
 
-class epSocketResponseXML extends epSocketResponse
+class ep_SocketResponseXML extends ep_SocketResponse
 {
     /**
      * Konstruktor
@@ -491,9 +491,9 @@ class epSocketResponseXML extends epSocketResponse
 
 
 /**
- * Class epSocketException
+ * Class ep_SocketException
  *
- * Bazowy wyjatek od epSocket
+ * Bazowy wyjatek od ep_Socket
  *
  * @package \HttpNetwork\Exceptions
  * @version 0.1
@@ -501,7 +501,7 @@ class epSocketResponseXML extends epSocketResponse
  * @link sejmometr.pl
  *
  */
-class epSocketException extends ErrorException
+class ep_SocketException extends ErrorException
 {
     /**
      * Konstruktor
@@ -512,16 +512,16 @@ class epSocketException extends ErrorException
     public function __construct($message = null, $code = 0, $severity = E_ERROR)
     {
         if (is_null($message)) {
-            $message = 'General epSocket exception';
+            $message = 'General ep_Socket exception';
         }
         parent::__construct($message, $code, $severity);
     }
 }
 
 /**
- * Class epSocketResourceNotFoundException
+ * Class ep_SocketResourceNotFoundException
  *
- * Bazowy wyjatek od epSocket
+ * Bazowy wyjatek od ep_Socket
  *
  * @package \HttpNetwork\Exceptions
  * @version 0.1
@@ -529,7 +529,7 @@ class epSocketException extends ErrorException
  * @link sejmometr.pl
  *
  */
-class epSocketResourceNotFoundException extends epSocketException
+class ep_SocketResourceNotFoundException extends ep_SocketException
 {
     /**
      * Konstruktor
@@ -541,9 +541,9 @@ class epSocketResourceNotFoundException extends epSocketException
 }
 
 /**
- * Class epSocketBadRequestException
+ * Class ep_SocketBadRequestException
  *
- * Bazowy wyjatek od epSocket
+ * Bazowy wyjatek od ep_Socket
  *
  * @package \HttpNetwork\Exceptions
  * @version 0.1
@@ -551,7 +551,7 @@ class epSocketResourceNotFoundException extends epSocketException
  * @link sejmometr.pl
  *
  */
-class epSocketBadRequestException extends epSocketException
+class ep_SocketBadRequestException extends ep_SocketException
 {
     /**
      * Konstruktor
@@ -563,9 +563,9 @@ class epSocketBadRequestException extends epSocketException
 }
 
 /**
- * Class epSocketEmptyResponseException
+ * Class ep_SocketEmptyResponseException
  */
-class epSocketEmptyResponseException extends epSocketException
+class ep_SocketEmptyResponseException extends ep_SocketException
 {
     /**
      * Konstruktor

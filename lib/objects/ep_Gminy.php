@@ -3,20 +3,20 @@
  * DataSet: Gminy
  * Baza gmin w Polsce, kompatybilna z rejestrami TERYT i NTS. Zawiera dane teleadresowe oraz przestrzenne
  *
- * @package Objects\epGminy
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Gminy
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epGminy cleanFilters()
- * @method epGminy cleanQueryString()
- * @method epGminy cleanSort()
- * @method epGminy cleanResponseType()
- * @method epGminy cleanLimit()
- * @method epGminy cleanPage()
+ * @method ep_Gminy cleanFilters()
+ * @method ep_Gminy cleanQueryString()
+ * @method ep_Gminy cleanSort()
+ * @method ep_Gminy cleanResponseType()
+ * @method ep_Gminy cleanLimit()
+ * @method ep_Gminy cleanPage()
  */
 
-class epGminy extends epDataset
+class ep_Gminy extends ep_Dataset
 {
 	/** 
 	 * 
@@ -191,7 +191,7 @@ class epGminy extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -202,14 +202,14 @@ class epGminy extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epGmina[]
+     * @return array|ep_Gmina[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epGmina($object));
+                array_push($this->objects, new ep_Gmina($object));
             }
         }
         return $this->objects;
@@ -233,8 +233,8 @@ class epGminy extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epGmina
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Gmina
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -264,7 +264,7 @@ class epGminy extends epDataset
  * @property string $wojewodztwa_id $fieldset
  * @property string $wojewodztwa_nazwa $fieldset
  */
-class epGmina extends epObject
+class ep_Gmina extends ep_Object
 {
     /**
      * Pola obiektu
@@ -313,7 +313,7 @@ class epGmina extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epGmina
+     * @return ep_Gmina
      */
     public function loadObjectById($id = null)
     {
@@ -331,7 +331,7 @@ class epGmina extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epGmina
+     * @return ep_Gmina
      */
     public function loadLayer($layer)
     {

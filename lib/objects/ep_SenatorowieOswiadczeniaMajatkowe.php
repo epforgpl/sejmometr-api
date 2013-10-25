@@ -3,20 +3,20 @@
  * DataSet: Oświadczenia majątkowe senatorów
  * Oświadczenia majątkowe senatorów Senatu 7-mej kadencji
  *
- * @package Objects\epSenatorowieOswiadczeniaMajatkowe
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SenatorowieOswiadczeniaMajatkowe
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSenatorowieOswiadczeniaMajatkowe cleanFilters()
- * @method epSenatorowieOswiadczeniaMajatkowe cleanQueryString()
- * @method epSenatorowieOswiadczeniaMajatkowe cleanSort()
- * @method epSenatorowieOswiadczeniaMajatkowe cleanResponseType()
- * @method epSenatorowieOswiadczeniaMajatkowe cleanLimit()
- * @method epSenatorowieOswiadczeniaMajatkowe cleanPage()
+ * @method ep_SenatorowieOswiadczeniaMajatkowe cleanFilters()
+ * @method ep_SenatorowieOswiadczeniaMajatkowe cleanQueryString()
+ * @method ep_SenatorowieOswiadczeniaMajatkowe cleanSort()
+ * @method ep_SenatorowieOswiadczeniaMajatkowe cleanResponseType()
+ * @method ep_SenatorowieOswiadczeniaMajatkowe cleanLimit()
+ * @method ep_SenatorowieOswiadczeniaMajatkowe cleanPage()
  */
 
-class epSenatorowieOswiadczeniaMajatkowe extends epDataset
+class ep_SenatorowieOswiadczeniaMajatkowe extends ep_Dataset
 {
 	/** 
 	 * 
@@ -64,7 +64,7 @@ class epSenatorowieOswiadczeniaMajatkowe extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -75,14 +75,14 @@ class epSenatorowieOswiadczeniaMajatkowe extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSenatorowieOswiadczenieMajatkowe[]
+     * @return array|ep_SenatorowieOswiadczenieMajatkowe[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSenatorowieOswiadczenieMajatkowe($object));
+                array_push($this->objects, new ep_SenatorowieOswiadczenieMajatkowe($object));
             }
         }
         return $this->objects;
@@ -106,8 +106,8 @@ class epSenatorowieOswiadczeniaMajatkowe extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSenatorowieOswiadczenieMajatkowe
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SenatorowieOswiadczenieMajatkowe
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -119,7 +119,7 @@ class epSenatorowieOswiadczeniaMajatkowe extends epDataset
  * @property string $nazwa
  * @property string $senator_id
  */
-class epSenatorowieOswiadczenieMajatkowe extends epObject
+class ep_SenatorowieOswiadczenieMajatkowe extends ep_Object
 {
     /**
      * Pola obiektu
@@ -166,7 +166,7 @@ class epSenatorowieOswiadczenieMajatkowe extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSenatorowieOswiadczenieMajatkowe
+     * @return ep_SenatorowieOswiadczenieMajatkowe
      */
     public function loadObjectById($id = null)
     {
@@ -184,7 +184,7 @@ class epSenatorowieOswiadczenieMajatkowe extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSenatorowieOswiadczenieMajatkowe
+     * @return ep_SenatorowieOswiadczenieMajatkowe
      */
     public function loadLayer($layer)
     {

@@ -3,20 +3,20 @@
  * DataSet: Prawo lokalne
  * Akty prawa lokalnego polskich województw, powiatów i gmin.
  *
- * @package Objects\epPrawaLokalne
- * @version 0.1 alpha build 93
+ * @package Objects\ep_PrawaLokalne
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epPrawaLokalne cleanFilters()
- * @method epPrawaLokalne cleanQueryString()
- * @method epPrawaLokalne cleanSort()
- * @method epPrawaLokalne cleanResponseType()
- * @method epPrawaLokalne cleanLimit()
- * @method epPrawaLokalne cleanPage()
+ * @method ep_PrawaLokalne cleanFilters()
+ * @method ep_PrawaLokalne cleanQueryString()
+ * @method ep_PrawaLokalne cleanSort()
+ * @method ep_PrawaLokalne cleanResponseType()
+ * @method ep_PrawaLokalne cleanLimit()
+ * @method ep_PrawaLokalne cleanPage()
  */
 
-class epPrawaLokalne extends epDataset
+class ep_PrawaLokalne extends ep_Dataset
 {
 	/** 
 	 * 
@@ -118,7 +118,7 @@ class epPrawaLokalne extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -129,14 +129,14 @@ class epPrawaLokalne extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epPrawoLokalne[]
+     * @return array|ep_PrawoLokalne[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epPrawoLokalne($object));
+                array_push($this->objects, new ep_PrawoLokalne($object));
             }
         }
         return $this->objects;
@@ -160,8 +160,8 @@ class epPrawaLokalne extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epPrawoLokalne
- * @version 0.1 alpha build 93
+ * @package Objects\ep_PrawoLokalne
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -182,7 +182,7 @@ class epPrawaLokalne extends epDataset
  * @property string $tytul_skrocony
  * @property string $wojewodztwo_id
  */
-class epPrawoLokalne extends epObject
+class ep_PrawoLokalne extends ep_Object
 {
     /**
      * Pola obiektu
@@ -227,7 +227,7 @@ class epPrawoLokalne extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epPrawoLokalne
+     * @return ep_PrawoLokalne
      */
     public function loadObjectById($id = null)
     {
@@ -245,7 +245,7 @@ class epPrawoLokalne extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epPrawoLokalne
+     * @return ep_PrawoLokalne
      */
     public function loadLayer($layer)
     {

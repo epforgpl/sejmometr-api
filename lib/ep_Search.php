@@ -17,16 +17,16 @@
  *
  */
 
-class epSearch
+class ep_Search
 {
     /**
      * Bazowe ustawienia
      *
      * <ul>
      *      <li>array: dataSetFilter - możliwość ustawienia wielu datasetów - ustawianie filtrów mija się wtedy z celem</li>
-     *      <li>array: filters - ustawienia dla filtrów na podstawie epDatasetEnum<dataset></li>
+     *      <li>array: filters - ustawienia dla filtrów na podstawie ep_DatasetEnum<dataset></li>
      *      <li>string: queryString - słowo do przeszukiwania data setów, np. ZUS</li>
-     *      <li>array: sort - array z ustawieniami sortowania, również wykorzystuje encje epDatasetEnum</li>
+     *      <li>array: sort - array z ustawieniami sortowania, również wykorzystuje encje ep_DatasetEnum</li>
      *      <li>int: limit - ilsoc obiektow na strone</li>
      *      <li>int: page - strona, ktora chcemy pobrac</li>
      *      <li>string: responseType - typ odpowiedzi jakiej oczekujemy od serwera, aktualnie json|xml</li>
@@ -37,7 +37,7 @@ class epSearch
      */
     protected $_settingsDefault = array(
         'dataSetFilter' => array(), # mozliwosc ustawienia wielu datasetow
-        'filters' => array(), # filtry na podstawie odpowiednichh epDatasetEnum<dataset>
+        'filters' => array(), # filtry na podstawie odpowiednichh ep_DatasetEnum<dataset>
         'queryString' => '', # słowo kluczowe do wyszukiwania
         'sort' => array(),
         'limit' => null,
@@ -59,7 +59,7 @@ class epSearch
     /**
      * Array z ustawieniami
      *
-     * @see epDatasetObject::_settingsDefault
+     * @see ep_DatasetObject::_settingsDefault
      *
      * @var ArrayObject
      */
@@ -67,26 +67,26 @@ class epSearch
 
     /**
      * Odpowiedz serwera
-     * @var epSocketResponse
+     * @var ep_SocketResponse
      */
     public $response = null;
 
     /**
      * Socket do połączenia
-     * @var epSocket
+     * @var ep_Socket
      */
     public $socket = null;
 
     /**
      * Alias dla datasetu, ustawiany z encji
-     * @see epDatasetEnum
+     * @see ep_DatasetEnum
      * @var string
      */
     public $alias = null;
 
     /**
      * Zbiór sprasowanych obiektów z odpowiedzi
-     * @var epObject[]
+     * @var ep_Object[]
      */
     public $objects = array();
 
@@ -102,7 +102,7 @@ class epSearch
 
     /**
      * Konstruktor, przyjmuje ustawienia jako parametry
-     * @see epDataset::_settingsDefault
+     * @see ep_Dataset::_settingsDefault
      * @param array|int|null $config
      */
     public function __construct($config = null)
@@ -115,7 +115,7 @@ class epSearch
      * Funkcja wyszukiwania obiektow na podstawie wszystkich ustawionych filtrow
      *
      * @param array|int|null $config
-     * @return epSocketResponse
+     * @return ep_SocketResponse
      * @abstract
      */
     public function search($config = null)
@@ -152,7 +152,7 @@ class epSearch
 
     /**
      * Ustawia wiele filtrow naraz, forma :
-     * @example epPrawo::setFilters(array(epPrawo::STATUS => epPrawoStatus::OBOWIAZUJACY))
+     * @example ep_Prawo::setFilters(array(ep_Prawo::STATUS => ep_PrawoStatus::OBOWIAZUJACY))
      *
      * @param array $filters
      * @return $this
@@ -160,7 +160,6 @@ class epSearch
     public function setFilters($filters = array())
     {
         foreach ($filters as $field => $value) {
-            if(strpos($field,'f_') == 0) { $field = substr($field, 2);}
             $this->setFilter($field, $value);
         }
         $this->setConfig();
@@ -170,14 +169,14 @@ class epSearch
     /**
      * Ustawia pojedynczy filtr
      *
-     * @exmaple @example epPrawo::setFilters(epPrawo::STATUS, epPrawoStatus::OBOWIAZUJACY)
+     * @exmaple @example ep_Prawo::setFilters(ep_Prawo::STATUS, ep_PrawoStatus::OBOWIAZUJACY)
      * @param string $field
      * @param int|string $value
      * @return $this
      */
     public function setFilter($field = null, $value = null)
     {
-        if(strpos($field,'f_') == 0) { $field = substr($field, 2);}
+        if(strpos($field,'f_') !== 0) { $field = 'f_'.$field;}
         if (!isset($this->_settingsDefault['filters'][$field]) || !is_array($this->_settingsDefault['filters'][$field])) {
             $this->_settingsDefault['filters'][$field] = array();
         }
@@ -188,7 +187,7 @@ class epSearch
 
     /**
      * Zwraca obiekt odpowiedzi serwera
-     * @return epSocketResponse|null
+     * @return ep_SocketResponse|null
      */
     public function getResponseObject()
     {
@@ -250,14 +249,14 @@ class epSearch
     /**
      * Ustawia sposob odpowiedzi w kontekscie filtrow i tresci
      * <ul>
-     *      <li>epSearch::OUTPUT_FILTERS - zwraca tylko filtry dostępne dla danego zapytania</li>
-     *      <li>epSearch::OUTPUT_OBJECT - zwraca tylko obiekty dostępne dla danego zapytania</li>
-     *      <li>array(epSearch::OUTPUT_OBJECT,epSearch::OUTPUT_FILTERS) - domyślnie, zwraca kombinację powyższych</li>
+     *      <li>ep_Search::OUTPUT_FILTERS - zwraca tylko filtry dostępne dla danego zapytania</li>
+     *      <li>ep_Search::OUTPUT_OBJECT - zwraca tylko obiekty dostępne dla danego zapytania</li>
+     *      <li>array(ep_Search::OUTPUT_OBJECT,ep_Search::OUTPUT_FILTERS) - domyślnie, zwraca kombinację powyższych</li>
      * </ul>
      * @param array|string|null $output
      * @return $this
      */
-    public function setOutput($output = array(epSearch::OUTPUT_FILTERS, epSearch::OUTPUT_OBJECTS))
+    public function setOutput($output = array(ep_Search::OUTPUT_FILTERS, ep_Search::OUTPUT_OBJECTS))
     {
         $this->_settingsDefault['output'] = $output;
         $this->setConfig();
@@ -268,12 +267,12 @@ class epSearch
      * Tworzy socket na potrzebe wykonania żądania
      *
      * @interal
-     * @return epSocket
+     * @return ep_Socket
      */
     protected function createSearchSocket()
     {
         $post = http_build_query(array('page' => $this->settings->page, 'limit' => $this->settings->limit, 'output' => $this->settings->output, 'q' => $this->settings->queryString));
-        $socket = new epSocket(array(
+        $socket = new ep_Socket(array(
             'request' => array(
                 'post' => $post,
                 'url' => ($this->alias) ? $this->alias : 'dane',
@@ -301,7 +300,7 @@ class epSearch
             }
         } else if (preg_match('/getPagination/', $func, $match)) {
             /**
-             * @see epSocketResponse::getPagination()
+             * @see ep_SocketResponse::getPagination()
              */
             return $this->response->getPagination(array_pop($args));
         }
@@ -323,7 +322,7 @@ class epSearch
     }
 
     /**
-     * Get na epDataset wywoluje get na obiekcie epSocketResponse
+     * Get na ep_Dataset wywoluje get na obiekcie ep_SocketResponse
      * @param $attr
      * @return mixed
      */
@@ -334,14 +333,15 @@ class epSearch
 
     /**
      * Zwraca array sparsowanych obiektow
-     * @return epObjects[]
+     * @return ep_Objects[]
      */
     public function getObjects()
     {
+        $this->objects = array();
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epObject($object));
+                array_push($this->objects, new ep_Object($object));
             }
         }
         return $this->objects;
@@ -351,7 +351,7 @@ class epSearch
      * Alias dla setQueryString
      * @param null $string
      * @return $this
-     * @see epSearch::setQueryString()
+     * @see ep_Search::setQueryString()
      */
     public function setQ($string = null)
     {
@@ -366,5 +366,6 @@ class epSearch
      */
     public function setDataset($alias) {
         $this->alias = $alias;
+        return $this;
     }
 }
