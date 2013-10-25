@@ -13,10 +13,10 @@ define('API_SECRET', '66585fd09c3d1685705b4dcbbbcaef62');
 define('FORMAT_JSON', 0);
 define('FORMAT_XML', 1);
 
-//require_once('epSocket.php');
-//require_once('epInflector.php');
-//require_once('epSearch.php');
-//require_once('epDataset.php');
+//require_once('ep_Socket.php');
+//require_once('ep_Inflector.php');
+//require_once('ep_Search.php');
+//require_once('ep_Dataset.php');
 /**
  * Autoloader
  *
@@ -33,7 +33,7 @@ define('FORMAT_XML', 1);
 //
 //spl_autoload_register('dataSetLoad');
 
-require_once('epAutoloader.php');
+require_once('ep_Autoloader.php');
 $o = new epAutoloader();
 $o->register();
 

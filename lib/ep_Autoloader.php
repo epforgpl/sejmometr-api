@@ -42,10 +42,10 @@ class epAutoloader {
 		return array (
 			'epApi' => 'epApi.php',
 			'epAutoloader' => 'epAutoloader.php',
-			'epDataset' => 'epDataset.php',
-			'epObject' => 'epDataset.php',
-			'epSearch' => 'epSearch.php',
-			'epSocket' => 'epSocket.php',
+			'epDataset' => 'ep_Dataset.php',
+			'epObject' => 'ep_Dataset.php',
+			'epSearch' => 'ep_Search.php',
+			'epSocket' => 'ep_Socket.php',
 		);
 	}
 	
