@@ -3,20 +3,20 @@
  * DataSet: Projekty uchwał
  * Baza projektów uchwał złożonych w Sejmie 7-ej kadencji.
  *
- * @package Objects\epLegislacjaProjektyUchwal
- * @version 0.1 alpha build 93
+ * @package Objects\ep_LegislacjaProjektyUchwal
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epLegislacjaProjektyUchwal cleanFilters()
- * @method epLegislacjaProjektyUchwal cleanQueryString()
- * @method epLegislacjaProjektyUchwal cleanSort()
- * @method epLegislacjaProjektyUchwal cleanResponseType()
- * @method epLegislacjaProjektyUchwal cleanLimit()
- * @method epLegislacjaProjektyUchwal cleanPage()
+ * @method ep_LegislacjaProjektyUchwal cleanFilters()
+ * @method ep_LegislacjaProjektyUchwal cleanQueryString()
+ * @method ep_LegislacjaProjektyUchwal cleanSort()
+ * @method ep_LegislacjaProjektyUchwal cleanResponseType()
+ * @method ep_LegislacjaProjektyUchwal cleanLimit()
+ * @method ep_LegislacjaProjektyUchwal cleanPage()
  */
 
-class epLegislacjaProjektyUchwal extends epDataset
+class ep_LegislacjaProjektyUchwal extends ep_Dataset
 {
 	/** 
 	 * Autor projektu
@@ -148,7 +148,7 @@ class epLegislacjaProjektyUchwal extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -159,14 +159,14 @@ class epLegislacjaProjektyUchwal extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epLegislacjaProjektUchwaly[]
+     * @return array|ep_LegislacjaProjektUchwaly[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epLegislacjaProjektUchwaly($object));
+                array_push($this->objects, new ep_LegislacjaProjektUchwaly($object));
             }
         }
         return $this->objects;
@@ -190,8 +190,8 @@ class epLegislacjaProjektyUchwal extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epLegislacjaProjektUchwaly
- * @version 0.1 alpha build 93
+ * @package Objects\ep_LegislacjaProjektUchwaly
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -217,7 +217,7 @@ class epLegislacjaProjektyUchwal extends epDataset
  * @property string $tytul
  * @property string $tytul_skrocony
  */
-class epLegislacjaProjektUchwaly extends epObject
+class ep_LegislacjaProjektUchwaly extends ep_Object
 {
     /**
      * Pola obiektu
@@ -262,7 +262,7 @@ class epLegislacjaProjektUchwaly extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epLegislacjaProjektUchwaly
+     * @return ep_LegislacjaProjektUchwaly
      */
     public function loadObjectById($id = null)
     {
@@ -280,7 +280,7 @@ class epLegislacjaProjektUchwaly extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epLegislacjaProjektUchwaly
+     * @return ep_LegislacjaProjektUchwaly
      */
     public function loadLayer($layer)
     {

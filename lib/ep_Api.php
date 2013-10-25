@@ -13,31 +13,32 @@ define('API_SECRET', '66585fd09c3d1685705b4dcbbbcaef62');
 define('FORMAT_JSON', 0);
 define('FORMAT_XML', 1);
 
-//require_once('ep_Socket.php');
-//require_once('ep_Inflector.php');
-//require_once('ep_Search.php');
-//require_once('ep_Dataset.php');
+require_once('ep_Socket.php');
+require_once('ep_Inflector.php');
+require_once('ep_Search.php');
+require_once('ep_Dataset.php');
+
 /**
  * Autoloader
  *
  * @param string $class
  */
-//function dataSetload($class)
-//{
-//    $path = dirname(__FILE__) . '/objects/';
-//    if (!file_exists($path . $class . '.php')) {
-//        $class = constant('FILE_' . $class);
-//    }
-//    require_once $path . $class . '.php';
-//}
-//
-//spl_autoload_register('dataSetLoad');
+function dataSetload($class)
+{
+    $path = dirname(__FILE__) . '/objects/';
+    if (!file_exists($path . $class . '.php')) {
+        $class = constant('FILE_' . $class);
+    }
+    require_once $path . $class . '.php';
+}
 
-require_once('ep_Autoloader.php');
-$o = new epAutoloader();
-$o->register();
+spl_autoload_register('dataSetLoad');
 
-class epApi
+//require_once('ep_Autoloader.php');
+//$o = new ep_Autoloader();
+//$o->register();
+
+class ep_Api
 {
     public static $inflector = array();
 }

@@ -3,20 +3,20 @@
  * DataSet: Prawo w publikatorach
  * Akty prawne publikowane w Dzienniku Ustaw i Monitorze Polskim. Zawiera połączone bazy Rządowego Centrum Legislacyjnego oraz Kancelarii Sejmu (baza ISAP).
  *
- * @package Objects\epPrawa
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Prawa
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epPrawa cleanFilters()
- * @method epPrawa cleanQueryString()
- * @method epPrawa cleanSort()
- * @method epPrawa cleanResponseType()
- * @method epPrawa cleanLimit()
- * @method epPrawa cleanPage()
+ * @method ep_Prawa cleanFilters()
+ * @method ep_Prawa cleanQueryString()
+ * @method ep_Prawa cleanSort()
+ * @method ep_Prawa cleanResponseType()
+ * @method ep_Prawa cleanLimit()
+ * @method ep_Prawa cleanPage()
  */
 
-class epPrawa extends epDataset
+class ep_Prawa extends ep_Dataset
 {
 	/** 
 	 * Organ wydający
@@ -226,7 +226,7 @@ class epPrawa extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -237,14 +237,14 @@ class epPrawa extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epPrawo[]
+     * @return array|ep_Prawo[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epPrawo($object));
+                array_push($this->objects, new ep_Prawo($object));
             }
         }
         return $this->objects;
@@ -268,8 +268,8 @@ class epPrawa extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epPrawo
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Prawo
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -308,7 +308,7 @@ class epPrawa extends epDataset
  * @property string $tytul_skrocony
  * @property string $zrodlo
  */
-class epPrawo extends epObject
+class ep_Prawo extends ep_Object
 {
     /**
      * Pola obiektu
@@ -353,7 +353,7 @@ class epPrawo extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epPrawo
+     * @return ep_Prawo
      */
     public function loadObjectById($id = null)
     {
@@ -371,7 +371,7 @@ class epPrawo extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epPrawo
+     * @return ep_Prawo
      */
     public function loadLayer($layer)
     {

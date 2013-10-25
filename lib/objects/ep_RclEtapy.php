@@ -3,20 +3,20 @@
  * DataSet: Etapy prac legislacyjnych rządu
  * Wydarzenia w ramach rządowego procesu legislacyjnego
  *
- * @package Objects\epRclEtapy
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RclEtapy
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epRclEtapy cleanFilters()
- * @method epRclEtapy cleanQueryString()
- * @method epRclEtapy cleanSort()
- * @method epRclEtapy cleanResponseType()
- * @method epRclEtapy cleanLimit()
- * @method epRclEtapy cleanPage()
+ * @method ep_RclEtapy cleanFilters()
+ * @method ep_RclEtapy cleanQueryString()
+ * @method ep_RclEtapy cleanSort()
+ * @method ep_RclEtapy cleanResponseType()
+ * @method ep_RclEtapy cleanLimit()
+ * @method ep_RclEtapy cleanPage()
  */
 
-class epRclEtapy extends epDataset
+class ep_RclEtapy extends ep_Dataset
 {
 	/** 
 	 * 
@@ -76,7 +76,7 @@ class epRclEtapy extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -87,14 +87,14 @@ class epRclEtapy extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epRclEtap[]
+     * @return array|ep_RclEtap[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epRclEtap($object));
+                array_push($this->objects, new ep_RclEtap($object));
             }
         }
         return $this->objects;
@@ -118,8 +118,8 @@ class epRclEtapy extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epRclEtap
- * @version 0.1 alpha build 93
+ * @package Objects\ep_RclEtap
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -133,7 +133,7 @@ class epRclEtapy extends epDataset
  * @property string $tytul_projektu
  * @property string $rcl_etapy_typy_tytul $fieldset
  */
-class epRclEtap extends epObject
+class ep_RclEtap extends ep_Object
 {
     /**
      * Pola obiektu
@@ -178,7 +178,7 @@ class epRclEtap extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epRclEtap
+     * @return ep_RclEtap
      */
     public function loadObjectById($id = null)
     {
@@ -196,7 +196,7 @@ class epRclEtap extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epRclEtap
+     * @return ep_RclEtap
      */
     public function loadLayer($layer)
     {

@@ -3,20 +3,20 @@
  * DataSet: Rejestr korzysci posłów
  * Dokumenty z opisami korzyści przyjmowanych przez posłów na Sejm 7-mej kadencji
  *
- * @package Objects\epPoslowieRejestrKorzysci
- * @version 0.1 alpha build 93
+ * @package Objects\ep_PoslowieRejestrKorzysci
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epPoslowieRejestrKorzysci cleanFilters()
- * @method epPoslowieRejestrKorzysci cleanQueryString()
- * @method epPoslowieRejestrKorzysci cleanSort()
- * @method epPoslowieRejestrKorzysci cleanResponseType()
- * @method epPoslowieRejestrKorzysci cleanLimit()
- * @method epPoslowieRejestrKorzysci cleanPage()
+ * @method ep_PoslowieRejestrKorzysci cleanFilters()
+ * @method ep_PoslowieRejestrKorzysci cleanQueryString()
+ * @method ep_PoslowieRejestrKorzysci cleanSort()
+ * @method ep_PoslowieRejestrKorzysci cleanResponseType()
+ * @method ep_PoslowieRejestrKorzysci cleanLimit()
+ * @method ep_PoslowieRejestrKorzysci cleanPage()
  */
 
-class epPoslowieRejestrKorzysci extends epDataset
+class ep_PoslowieRejestrKorzysci extends ep_Dataset
 {
 	/** 
 	 * 
@@ -100,7 +100,7 @@ class epPoslowieRejestrKorzysci extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -111,14 +111,14 @@ class epPoslowieRejestrKorzysci extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epPoselRejestrKorzysci[]
+     * @return array|ep_PoselRejestrKorzysci[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epPoselRejestrKorzysci($object));
+                array_push($this->objects, new ep_PoselRejestrKorzysci($object));
             }
         }
         return $this->objects;
@@ -142,8 +142,8 @@ class epPoslowieRejestrKorzysci extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epPoselRejestrKorzysci
- * @version 0.1 alpha build 93
+ * @package Objects\ep_PoselRejestrKorzysci
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -161,7 +161,7 @@ class epPoslowieRejestrKorzysci extends epDataset
  * @property string $sejm_kluby_nazwa $fieldset
  * @property string $sejm_kluby_skrot $fieldset
  */
-class epPoselRejestrKorzysci extends epObject
+class ep_PoselRejestrKorzysci extends ep_Object
 {
     /**
      * Pola obiektu
@@ -213,7 +213,7 @@ class epPoselRejestrKorzysci extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epPoselRejestrKorzysci
+     * @return ep_PoselRejestrKorzysci
      */
     public function loadObjectById($id = null)
     {
@@ -231,7 +231,7 @@ class epPoselRejestrKorzysci extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epPoselRejestrKorzysci
+     * @return ep_PoselRejestrKorzysci
      */
     public function loadLayer($layer)
     {

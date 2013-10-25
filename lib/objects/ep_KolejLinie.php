@@ -3,20 +3,20 @@
  * DataSet: Linie kolejowe w Polsce
  * Zbiór zawierający listę linii kolejewych wraz z ich rozkładami.
  *
- * @package Objects\epKolejLinie
- * @version 0.1 alpha build 93
+ * @package Objects\ep_KolejLinie
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epKolejLinie cleanFilters()
- * @method epKolejLinie cleanQueryString()
- * @method epKolejLinie cleanSort()
- * @method epKolejLinie cleanResponseType()
- * @method epKolejLinie cleanLimit()
- * @method epKolejLinie cleanPage()
+ * @method ep_KolejLinie cleanFilters()
+ * @method ep_KolejLinie cleanQueryString()
+ * @method ep_KolejLinie cleanSort()
+ * @method ep_KolejLinie cleanResponseType()
+ * @method ep_KolejLinie cleanLimit()
+ * @method ep_KolejLinie cleanPage()
  */
 
-class epKolejLinie extends epDataset
+class ep_KolejLinie extends ep_Dataset
 {
 	/** 
 	 * 
@@ -82,7 +82,7 @@ class epKolejLinie extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -93,14 +93,14 @@ class epKolejLinie extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epKolejLinia[]
+     * @return array|ep_KolejLinia[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epKolejLinia($object));
+                array_push($this->objects, new ep_KolejLinia($object));
             }
         }
         return $this->objects;
@@ -124,8 +124,8 @@ class epKolejLinie extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epKolejLinia
- * @version 0.1 alpha build 93
+ * @package Objects\ep_KolejLinia
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -140,7 +140,7 @@ class epKolejLinie extends epDataset
  * @property string $stop_stacja_id
  * @property string $trasa_opis
  */
-class epKolejLinia extends epObject
+class ep_KolejLinia extends ep_Object
 {
     /**
      * Pola obiektu
@@ -185,7 +185,7 @@ class epKolejLinia extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epKolejLinia
+     * @return ep_KolejLinia
      */
     public function loadObjectById($id = null)
     {
@@ -203,7 +203,7 @@ class epKolejLinia extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epKolejLinia
+     * @return ep_KolejLinia
      */
     public function loadLayer($layer)
     {

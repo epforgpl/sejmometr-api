@@ -3,20 +3,20 @@
  * DataSet: Posłowie
  * Posłowie na Sejm RP
  *
- * @package Objects\epPoslowie
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Poslowie
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epPoslowie cleanFilters()
- * @method epPoslowie cleanQueryString()
- * @method epPoslowie cleanSort()
- * @method epPoslowie cleanResponseType()
- * @method epPoslowie cleanLimit()
- * @method epPoslowie cleanPage()
+ * @method ep_Poslowie cleanFilters()
+ * @method ep_Poslowie cleanQueryString()
+ * @method ep_Poslowie cleanSort()
+ * @method ep_Poslowie cleanResponseType()
+ * @method ep_Poslowie cleanLimit()
+ * @method ep_Poslowie cleanPage()
  */
 
-class epPoslowie extends epDataset
+class ep_Poslowie extends ep_Dataset
 {
 	/** 
 	 * 
@@ -274,7 +274,7 @@ class epPoslowie extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -285,14 +285,14 @@ class epPoslowie extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epPosel[]
+     * @return array|ep_Posel[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epPosel($object));
+                array_push($this->objects, new ep_Posel($object));
             }
         }
         return $this->objects;
@@ -316,8 +316,8 @@ class epPoslowie extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epPosel
- * @version 0.1 alpha build 93
+ * @package Objects\ep_Posel
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -364,7 +364,7 @@ class epPoslowie extends epDataset
  * @property string $sejm_kluby_nazwa $fieldset
  * @property string $sejm_kluby_skrot $fieldset
  */
-class epPosel extends epObject
+class ep_Posel extends ep_Object
 {
     /**
      * Pola obiektu
@@ -415,7 +415,7 @@ class epPosel extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epPosel
+     * @return ep_Posel
      */
     public function loadObjectById($id = null)
     {
@@ -433,7 +433,7 @@ class epPosel extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epPosel
+     * @return ep_Posel
      */
     public function loadLayer($layer)
     {

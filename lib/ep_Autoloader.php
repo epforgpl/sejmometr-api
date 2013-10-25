@@ -15,7 +15,7 @@
  * @version    0.x.x-dev
  * @since      version 0.1.0 
  */
-class epAutoloader {
+class ep_Autoloader {
 	
 	/**
 	 * @var array Autoloader class map with class names as keys and paths to the files as values 
@@ -40,12 +40,12 @@ class epAutoloader {
 	 */
 	protected function getDefaultMap() {
 		return array (
-			'epApi' => 'epApi.php',
-			'epAutoloader' => 'epAutoloader.php',
-			'epDataset' => 'ep_Dataset.php',
-			'epObject' => 'ep_Dataset.php',
-			'epSearch' => 'ep_Search.php',
-			'epSocket' => 'ep_Socket.php',
+			'ep_Api' => 'ep_Api.php',
+			'ep_Autoloader' => 'ep_Autoloader.php',
+			'ep_Dataset' => 'ep_Dataset.php',
+			'ep_Object' => 'ep_Dataset.php',
+			'ep_Search' => 'ep_Search.php',
+			'ep_Socket' => 'ep_Socket.php',
 		);
 	}
 	

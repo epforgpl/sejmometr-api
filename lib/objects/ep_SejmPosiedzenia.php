@@ -3,20 +3,20 @@
  * DataSet: Posiedzenia Sejmu
  * Baza posiedzeń Sejmu 7-mej kadencji
  *
- * @package Objects\epSejmPosiedzenia
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmPosiedzenia
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epSejmPosiedzenia cleanFilters()
- * @method epSejmPosiedzenia cleanQueryString()
- * @method epSejmPosiedzenia cleanSort()
- * @method epSejmPosiedzenia cleanResponseType()
- * @method epSejmPosiedzenia cleanLimit()
- * @method epSejmPosiedzenia cleanPage()
+ * @method ep_SejmPosiedzenia cleanFilters()
+ * @method ep_SejmPosiedzenia cleanQueryString()
+ * @method ep_SejmPosiedzenia cleanSort()
+ * @method ep_SejmPosiedzenia cleanResponseType()
+ * @method ep_SejmPosiedzenia cleanLimit()
+ * @method ep_SejmPosiedzenia cleanPage()
  */
 
-class epSejmPosiedzenia extends epDataset
+class ep_SejmPosiedzenia extends ep_Dataset
 {
 	/** 
 	 * Data rozpoczęcia
@@ -196,7 +196,7 @@ class epSejmPosiedzenia extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -207,14 +207,14 @@ class epSejmPosiedzenia extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epSejmPosiedzenie[]
+     * @return array|ep_SejmPosiedzenie[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epSejmPosiedzenie($object));
+                array_push($this->objects, new ep_SejmPosiedzenie($object));
             }
         }
         return $this->objects;
@@ -238,8 +238,8 @@ class epSejmPosiedzenia extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epSejmPosiedzenie
- * @version 0.1 alpha build 93
+ * @package Objects\ep_SejmPosiedzenie
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -273,7 +273,7 @@ class epSejmPosiedzenia extends epDataset
  * @property string $tytul
  * @property string $zapowiedz
  */
-class epSejmPosiedzenie extends epObject
+class ep_SejmPosiedzenie extends ep_Object
 {
     /**
      * Pola obiektu
@@ -318,7 +318,7 @@ class epSejmPosiedzenie extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epSejmPosiedzenie
+     * @return ep_SejmPosiedzenie
      */
     public function loadObjectById($id = null)
     {
@@ -336,7 +336,7 @@ class epSejmPosiedzenie extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epSejmPosiedzenie
+     * @return ep_SejmPosiedzenie
      */
     public function loadLayer($layer)
     {

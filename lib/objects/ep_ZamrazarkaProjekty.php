@@ -3,20 +3,20 @@
  * DataSet: Zamrażarka Marszałka
  * Projekty ustaw i uchwał, które wpłyneły do Sejmu, ale nie zostały skierowane do pierwszego czytania.
  *
- * @package Objects\epZamrazarkaProjekty
- * @version 0.1 alpha build 93
+ * @package Objects\ep_ZamrazarkaProjekty
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
- * @method epZamrazarkaProjekty cleanFilters()
- * @method epZamrazarkaProjekty cleanQueryString()
- * @method epZamrazarkaProjekty cleanSort()
- * @method epZamrazarkaProjekty cleanResponseType()
- * @method epZamrazarkaProjekty cleanLimit()
- * @method epZamrazarkaProjekty cleanPage()
+ * @method ep_ZamrazarkaProjekty cleanFilters()
+ * @method ep_ZamrazarkaProjekty cleanQueryString()
+ * @method ep_ZamrazarkaProjekty cleanSort()
+ * @method ep_ZamrazarkaProjekty cleanResponseType()
+ * @method ep_ZamrazarkaProjekty cleanLimit()
+ * @method ep_ZamrazarkaProjekty cleanPage()
  */
 
-class epZamrazarkaProjekty extends epDataset
+class ep_ZamrazarkaProjekty extends ep_Dataset
 {
 	/** 
 	 * 
@@ -100,7 +100,7 @@ class epZamrazarkaProjekty extends epDataset
      * Konstruktor
      *
      * @param array $config ustawienia konfiguracyjne
-     * @see epDatasetObject::__construct()
+     * @see ep_DatasetObject::__construct()
      */
     public function __construct($config = null)
     {
@@ -111,14 +111,14 @@ class epZamrazarkaProjekty extends epDataset
 
     /**
      * Zwraca tablicę gotowych obiektów
-     * @return array|epZamrazarkaProjekt[]
+     * @return array|ep_ZamrazarkaProjekt[]
      */
     public function getObjects()
     {
         $objects = $this->response->getBodyObjects();
         foreach ($objects as $object) {
             if (isset($object['data'])) {
-                array_push($this->objects, new epZamrazarkaProjekt($object));
+                array_push($this->objects, new ep_ZamrazarkaProjekt($object));
             }
         }
         return $this->objects;
@@ -142,8 +142,8 @@ class epZamrazarkaProjekty extends epDataset
  * Klasa pojedynczego obiektu
  *
  *
- * @package Objects\epZamrazarkaProjekt
- * @version 0.1 alpha build 93
+ * @package Objects\ep_ZamrazarkaProjekt
+ * @version 0.1 alpha build 99
  * @author Sejmometr REST API lib Generator 1.0 <biuro@epf.org.pl>
  * @link sejmometr.pl
  *
@@ -161,7 +161,7 @@ class epZamrazarkaProjekty extends epDataset
  * @property string $tytul_skrocony
  * @property string $zamrazarka
  */
-class epZamrazarkaProjekt extends epObject
+class ep_ZamrazarkaProjekt extends ep_Object
 {
     /**
      * Pola obiektu
@@ -206,7 +206,7 @@ class epZamrazarkaProjekt extends epObject
      * Funkcja do zaladowania jednego konkretnego dokumentu
      *
      * @param int $id
-     * @return epZamrazarkaProjekt
+     * @return ep_ZamrazarkaProjekt
      */
     public function loadObjectById($id = null)
     {
@@ -224,7 +224,7 @@ class epZamrazarkaProjekt extends epObject
     /**
      * Ładuje warstwę dla obiektu
      * @param $layer
-     * @return epZamrazarkaProjekt
+     * @return ep_ZamrazarkaProjekt
      */
     public function loadLayer($layer)
     {
